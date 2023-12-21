@@ -13,10 +13,10 @@ from langchain.agents.agent_toolkits import create_retriever_tool
 DOCS_FOLDER = "D:\\edo_este\\uploads"
 
 st.set_page_config(
-    page_title="Using Streamlit and Pinecone, build a simple LLM app POC - chat with user uploaded PDFs"
+    page_title="Conversational Chatbot for Eyeglasses.com"
 )
 st.title(
-    "Using Streamlit and Pinecone, build a simple LLM app POC - chat with user uploaded PDFs"
+    "Conversational Chatbot for Eyeglasses.com"
 )
 
 openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
