@@ -10,7 +10,7 @@ from langchain.vectorstores import FAISS
 import streamlit as st
 from langchain.agents.agent_toolkits import create_retriever_tool
 
-DOCS_FOLDER = "D:\\edo_este\\uploads"
+DOCS_FOLDER = "uploads"
 
 st.set_page_config(
     page_title="Conversational Chatbot for Eyeglasses.com"
