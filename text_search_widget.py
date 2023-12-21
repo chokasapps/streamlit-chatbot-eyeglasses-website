@@ -80,7 +80,7 @@ for idx, msg in enumerate(msgs.messages):
                 st.write(step[1])
         st.write(msg.content)
 
-if prompt := st.chat_input(placeholder="Who won the Women's U.S. Open in 2018?"):
+if prompt := st.chat_input(placeholder="what are the top brands of glasses are available?"):
     st.chat_message("user").write(prompt)
 
     if not openai_api_key:
