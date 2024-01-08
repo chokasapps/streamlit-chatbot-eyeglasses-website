@@ -75,9 +75,7 @@ for idx, msg in enumerate(msgs.messages):
                 st.write(step[1])
         st.write(msg.content)
 
-if prompt := st.chat_input(
-    placeholder="what are the top brands of glasses are available?"
-):
+if prompt := st.chat_input(placeholder=""):
     st.chat_message("user").write(prompt)
 
     if not openai_api_key:
