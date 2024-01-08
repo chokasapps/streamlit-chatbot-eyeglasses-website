@@ -12,12 +12,7 @@ from langchain.agents.agent_toolkits import create_retriever_tool
 
 DOCS_FOLDER = "uploads"
 
-st.set_page_config(
-    page_title="Conversational Chatbot for Eyeglasses.com"
-)
-st.title(
-    "Conversational Chatbot for Eyeglasses.com"
-)
+st.set_page_config(page_title="Conversational Chatbot for Eyeglasses.com")
 
 openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 
@@ -80,7 +75,9 @@ for idx, msg in enumerate(msgs.messages):
                 st.write(step[1])
         st.write(msg.content)
 
-if prompt := st.chat_input(placeholder="what are the top brands of glasses are available?"):
+if prompt := st.chat_input(
+    placeholder="what are the top brands of glasses are available?"
+):
     st.chat_message("user").write(prompt)
 
     if not openai_api_key:
