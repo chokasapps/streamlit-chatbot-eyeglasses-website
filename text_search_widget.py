@@ -19,9 +19,7 @@ openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 
 @st.cache_resource  #
 def get_executer(_memory):
-    llm = ChatOpenAI(
-        model_name="gpt-3.5-turbo", openai_api_key=openai_api_key, streaming=True
-    )
+    llm = ChatOpenAI(model_name="gpt-4", openai_api_key=openai_api_key, streaming=True)
     embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
     loader = DirectoryLoader(
         DOCS_FOLDER,
