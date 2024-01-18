@@ -25,7 +25,7 @@ class Wrapper:
 
         def wrapper(*args, **kwargs):
             # print(f"Calling function: {attr}")
-            print(f"Arguments: {kwargs}")
+            # print(f"Arguments: {kwargs}")
             result = original_func(*args, **kwargs)
             return result
 
