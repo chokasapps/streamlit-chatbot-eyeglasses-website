@@ -1,6 +1,10 @@
 import asyncio
 import argparse
 from pyppeteer import launch
+import html2text
+import aiofiles as aiof
+import bleach
+from bs4 import BeautifulSoup
 
 
 async def intercept(request):
@@ -10,8 +14,28 @@ async def intercept(request):
         await request.continue_()
 
 
-async def download_pdf(page, url, output_file):
-    # Launch a browser
+async def download_text(page, url, output_directory, i, text_maker):
+    output_file = f"{output_directory}/output_{i}.txt"
+    print(f"Downloading Text for {url} to {output_file}")
+    options = {"timeout": 60000 * 5}  # 60000 * 10 is 5 minute
+
+    # Navigate to the URL
+    await page.goto(url, options=options)
+    content = await page.content()
+    soup = BeautifulSoup(content, "html.parser")
+    for div in soup.find_all("div", {"class": "custom-header"}):
+        div.decompose()
+    main_html = soup.select("div.container-full.site-content")[0].prettify()
+    page_text = text_maker.handle(main_html)
+    page_text = bleach.clean(page_text)
+    out = await aiof.open(output_file, "w", encoding="utf-8")
+    await out.write(page_text)
+    await out.flush()
+
+
+async def download_pdf(page, url, output_directory, i):
+    output_file = f"{output_directory}/output_{i}.pdf"
+    print(f"Downloading PDF for {url} to {output_file}")
 
     options = {"timeout": 60000 * 5}  # 60000 * 10 is 5 minute
 
@@ -38,10 +62,13 @@ async def process_urls(file_path, output_directory, limit=400):
     await page.setRequestInterception(True)
     page.on("request", lambda req: asyncio.ensure_future(intercept(req)))
 
+    text_maker = html2text.HTML2Text()
+    text_maker.ignore_links = True
+    text_maker.bypass_tables = False
+    text_maker.ignore_images = True
+
     for i, url in enumerate(urls, start=1):
-        output_file = f"{output_directory}/output_{i}.pdf"
-        print(f"Downloading PDF for {url} to {output_file}")
-        await download_pdf(page, url, output_file)
+        await download_text(page, url, output_directory, i, text_maker)
 
     # Close the browser
     await browser.close()
