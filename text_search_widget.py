@@ -35,7 +35,7 @@ class Wrapper:
 st.set_page_config(page_title="Conversational Chatbot for Eyeglasses.com")
 
 openai_api_key = st.sidebar.text_input(
-    "OpenAI API Key", type="password", value=os.environ["OPENAI_API_KEY"]
+    "OpenAI API Key", type="password", value=os.environ.get("OPENAI_API_KEY")
 )
 
 
