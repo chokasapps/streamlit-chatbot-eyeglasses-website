@@ -75,11 +75,15 @@ def get_executer(_memory):
     retriever = vectorstore.as_retriever()
     retriever_tool = create_retriever_tool(
         retriever,
-        "search_state_of_union",
-        "Searches and returns documents regarding the state-of-the-union.",
+        "local_database_context",
+        "Searches and returns documents regarding the local-database-context.",
     )
     tools = [retriever_tool]
-    chat_agent = ConversationalChatAgent.from_llm_and_tools(llm=llm, tools=tools)
+    chat_agent = ConversationalChatAgent.from_llm_and_tools(
+        llm=llm,
+        tools=tools,
+        system_message="Don't justify your answers. Don't give information not mentioned in the CONTEXT INFORMATION",
+    )
     executor = AgentExecutor.from_agent_and_tools(
         agent=chat_agent,
         tools=tools,
