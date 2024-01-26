@@ -297,6 +297,11 @@ Fees
 
 ####  FILTER
 
+  * Broadway 
+  * Eyeglasses 
+
+Ships Today  (1)
+
 ####  Gender  __
 
 Female  (36)
@@ -396,8 +401,6 @@ Most Popular  (1)
 Plastic  (63)
 
 Prescription Glasses  (1)
-
-Ships Today  (1)
 
 Small  (2)
 

@@ -4,10 +4,10 @@ from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
 from langchain.document_loaders import DirectoryLoader
-from langchain.document_loaders import PyPDFLoader, TextLoader
+from langchain.document_loaders import TextLoader
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
-from langchain.text_splitter import MarkdownHeaderTextSplitter, CharacterTextSplitter
+from langchain.text_splitter import CharacterTextSplitter
 from langchain.schema.document import Document
 import streamlit as st
 from langchain.agents.agent_toolkits import create_retriever_tool
@@ -58,14 +58,6 @@ def get_executer(_memory):
         loader_kwargs=text_loader_kwargs,
     )
     docs = loader.load()
-    headers_to_split_on = [
-        ("#", "Header 1"),
-        ("##", "Header 2"),
-        ("###", "Header 3"),
-    ]
-    markdown_splitter = MarkdownHeaderTextSplitter(
-        headers_to_split_on=headers_to_split_on
-    )
     text_splitter = CharacterTextSplitter.from_tiktoken_encoder(
         chunk_size=300, chunk_overlap=10
     )
@@ -107,6 +99,9 @@ memory = ConversationBufferMemory(
 )
 if len(msgs.messages) == 0 or st.sidebar.button("Reset chat history"):
     msgs.clear()
+    msgs.add_user_message(
+        "Don't justify your answers. Don't give information not mentioned in the CONTEXT INFORMATION"
+    )
     msgs.add_ai_message("How can I help you?")
     st.session_state.steps = {}
 

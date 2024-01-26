@@ -297,6 +297,9 @@ Fees
 
 ####  FILTER
 
+  * NRG 
+  * Eyeglasses 
+
 ####  Gender  __
 
 Female  (15)

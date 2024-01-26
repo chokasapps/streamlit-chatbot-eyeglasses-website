@@ -297,6 +297,11 @@ Fees
 
 ####  FILTER
 
+  * House Collection 
+  * Eyeglasses 
+
+Ships Today  (1)
+
 ####  Gender  __
 
 Female  (39)
@@ -404,8 +409,6 @@ Most Popular  (4)
 Plastic  (49)
 
 Prescription Glasses  (1)
-
-Ships Today  (1)
 
 Small  (2)
 

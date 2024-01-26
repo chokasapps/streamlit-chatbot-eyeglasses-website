@@ -297,6 +297,11 @@ Fees
 
 ####  FILTER
 
+  * Jhane Barnes 
+  * Eyeglasses 
+
+Ships Today  (1)
+
 ####  Gender  __
 
 Male  (30)
@@ -394,8 +399,6 @@ Most Popular  (1)
 Plastic  (10)
 
 Prescription Glasses  (1)
-
-Ships Today  (1)
 
 Titanium  (6)
 

@@ -297,6 +297,11 @@ Fees
 
 ####  FILTER
 
+  * Eyera 
+  * Eyeglasses 
+
+Ships Today  (1)
+
 ####  Gender  __
 
 Male  (9)
@@ -372,8 +377,6 @@ Most Popular  (1)
 Plastic  (1)
 
 Prescription Glasses  (1)
-
-Ships Today  (1)
 
 ####  Eye Size  __
 

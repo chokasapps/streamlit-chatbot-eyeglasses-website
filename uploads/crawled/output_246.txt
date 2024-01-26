@@ -297,6 +297,9 @@ Fees
 
 ####  FILTER
 
+  * Invincilites 
+  * Eyeglasses 
+
 ####  Gender  __
 
 Female  (13)
